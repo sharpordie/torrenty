@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<circle cx="256" cy="256" r="256" fill="#6DC180"/>
+<path d="M256,0v512c141.385,0,256-114.615,256-256S397.385,0,256,0z" fill="#5CA15D"/>
+<polygon points="219.43 367.93 108.61 257.11 147.39 218.32 219.43 290.35 355.46 154.32 394.25 193.11" fill="#F2F2F4"/>
+<polygon points="256 331.36 394.25 193.11 355.46 154.32 256 253.78" fill="#DFDFE1"/>
+</svg>
