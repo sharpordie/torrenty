@@ -1,5 +1,5 @@
-﻿using MonoTorrent.Client;
-using MonoTorrent;
+﻿using MonoTorrent;
+using MonoTorrent.Client;
 
 namespace Torrenty.ViewModels;
 
