@@ -24,7 +24,6 @@ public partial class MainViewModel : BaseViewModel
     async Task Cancel()
     {
         InvokeCommand.Cancel();
-        await Task.Delay(5000);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]
@@ -74,7 +73,7 @@ public partial class MainViewModel : BaseViewModel
         {
             Failure = true;
             Message = "Download was canceled";
-            Percent = 0;
+            Percent = 0.0;
             Success = false;
         }
     }
