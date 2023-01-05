@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Torrenty.ViewModels"
-             x:Class="Torrenty.Views.MainPage"
-             x:DataType="vm:MainViewModel">
+<ContentPage
+    x:Class="Torrenty.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Torrenty.ViewModels"
+    x:DataType="vm:MainViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,132 +13,112 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid
-        RowDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto">
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto">
 
-        <!--TOPBAR SECTION-->
-        
+        <!--  TOPBAR SECTION  -->
+
         <Label
             Grid.Row="0"
+            Margin="16,8"
             FontAttributes="Bold"
             FontSize="Large"
             HorizontalOptions="Center"
-            Margin="16,8"
-            Text="TORRENTY"
-            />
+            Text="TORRENTY" />
 
-        <Rectangle
+        <BoxView
             Grid.Row="1"
-            Fill="Black"
-            HeightRequest="2"
-            />
-        
-        <!--HEADER SECTION-->
-        
+            HeightRequest="1"
+            Color="Black" />
+
+        <!--  HEADER SECTION  -->
+
         <VerticalStackLayout
             Grid.Row="2"
             Padding="24"
-            VerticalOptions="Center"
-            >
+            VerticalOptions="Center">
             <Label
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
-                Text="{ Binding Results }"
-                VerticalTextAlignment="Center"
-                />
+                Text="{Binding Results}"
+                VerticalTextAlignment="Center" />
         </VerticalStackLayout>
 
-        <Rectangle
+        <BoxView
             Grid.Row="3"
-            Fill="Black"
-            HeightRequest="2"
-            />
-        
-        <!--DETAIL SECTION-->
-        
+            HeightRequest="1"
+            Color="Black" />
+
+        <!--  DETAIL SECTION  -->
+
         <Grid
             Grid.Row="4"
-            ColumnDefinitions="*,Auto"
-            Padding="16, 24"
-            >
-            <VerticalStackLayout
-                Grid.Column="0"
-                VerticalOptions="Center"
-                >
+            Padding="16,24"
+            ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
                 <Label
                     FontAttributes="Bold"
                     FontSize="Title"
-                    Text="Downloading"
-                    />
+                    Text="Downloading" />
                 <Label
-                    FontSize="Small"
                     Margin="0,8,0,0"
-                    Text="{Binding Message}"
-                    />
+                    FontSize="Small"
+                    Text="{Binding Message}" />
             </VerticalStackLayout>
             <Image
                 Grid.Column="1"
                 HeightRequest="64"
                 Source="normal.png"
-                WidthRequest="64"
-                />
+                WidthRequest="64" />
             <Label
                 Grid.Column="1"
                 BackgroundColor="White"
                 FontSize="Large"
                 HeightRequest="64"
                 HorizontalTextAlignment="Center"
-                IsVisible="{ Binding InvokeCommand.IsRunning }"
-                Text="{ Binding Percent, Converter={StaticResource DoubleToIntConverter} }"
+                IsVisible="{Binding InvokeCommand.IsRunning}"
+                Text="{Binding Percent, Converter={StaticResource DoubleToIntConverter}}"
                 VerticalTextAlignment="Center"
-                WidthRequest="64"
-                />
+                WidthRequest="64" />
             <ActivityIndicator
                 Grid.Column="1"
-                IsRunning="{ Binding InvokeCommand.IsRunning }"
                 Margin="-6"
-                />
+                IsRunning="{Binding InvokeCommand.IsRunning}" />
             <Image
                 Grid.Column="1"
                 HeightRequest="64"
-                IsVisible="{ Binding Success }"
+                IsVisible="{Binding Success}"
                 Source="success.png"
-                WidthRequest="64"
-                />
+                WidthRequest="64" />
             <Image
                 Grid.Column="1"
                 HeightRequest="64"
-                IsVisible="{ Binding Failure }"
+                IsVisible="{Binding Failure}"
                 Source="failure.png"
-                WidthRequest="64"
-                />
+                WidthRequest="64" />
         </Grid>
 
-        <Rectangle
+        <BoxView
             Grid.Row="5"
-            Fill="Black"
-            HeightRequest="2"
-            />
-        
-        <!--ACTION SECTION-->
-        
-        <Button
-            Grid.Row="6"
-            Command="{ Binding InvokeCommand }"
-            HeightRequest="48"
-            Text="DOWNLOAD"
-            Margin="16"
-            />
+            HeightRequest="1"
+            Color="Black" />
+
+        <!--  ACTION SECTION  -->
 
         <Button
             Grid.Row="6"
-            Command="{ Binding CancelCommand }"
-            HeightRequest="48"
-            IsVisible="{ Binding InvokeCommand.CanBeCanceled }"
-            Text="CANCEL"
-            BackgroundColor="OrangeRed"
             Margin="16"
-            />
+            Command="{Binding InvokeCommand}"
+            HeightRequest="48"
+            Text="DOWNLOAD" />
+
+        <Button
+            Grid.Row="6"
+            Margin="16"
+            BackgroundColor="OrangeRed"
+            Command="{Binding CancelCommand}"
+            HeightRequest="48"
+            IsVisible="{Binding InvokeCommand.CanBeCanceled}"
+            Text="CANCEL" />
 
     </Grid>
 

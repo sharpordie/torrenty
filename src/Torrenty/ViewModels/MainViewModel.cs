@@ -31,6 +31,7 @@ public partial class MainViewModel : BaseViewModel
     {
         try
         {
+            Percent = 0;
             Failure = false;
             Message = "Download is in progress";
             Results = "...";
@@ -59,21 +60,21 @@ public partial class MainViewModel : BaseViewModel
             await manager.WaitForMetadataAsync(token);
             while (manager.State is not TorrentState.Seeding)
             {
+                await Task.Delay(TimeSpan.FromSeconds(5), token);
                 Percent = manager.Progress;
-                await Task.Delay(TimeSpan.FromSeconds(2), token);
             }
             await manager.StopAsync();
             var element = Directory.GetDirectories(deposit).First();
             Message = "Download finished succcessfully";
             Percent = 100;
             Results = Directory.GetFiles(element).First();
-            Success = true;
+            Success = true;           
         }
         catch (OperationCanceledException)
         {
             Failure = true;
             Message = "Download was canceled";
-            Percent = 0.0;
+            Percent = 0;
             Success = false;
         }
     }
