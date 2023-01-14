@@ -9,5 +9,5 @@ MAUI application that uses the MonoTorrent package.
 ## Lorem ipsum dolor sit amet
 
 ```shell
----
+ 
 ```
